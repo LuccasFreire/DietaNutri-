@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'head' %}
+<link rel="stylesheet" href="{% static 'authentication/css/css.css' %}">
+{% endblock %}
+{% block 'title' %}Cadastro{% endblock %}
+
+{% block 'body' %}
+<div class="center">
+    <div class="area_cadastrar">
+        <h1 class="titulo text-center">Cadastro</h1>
+        <p class="sub-titulo text-center text-secondary">Se cadastre no nosso sistema!</p>
+        <hr>
+
+        <form action="{% url 'cadastro' %}" method="POST">
+            {% csrf_token %}
+            <h4 class="bold">Nome de usuário</h4>
+            <input class="form-control input-form shadow-sm" name="usuario" type="text" placeholder="Digite seu nome...">
+            <br>
+            <h4 class="bold">E-mail</h4>
+            <input class="form-control input-form shadow-sm" name="email" type="text" placeholder="Digite seu E-mail...">
+            <br>
+            <div class="row">
+                <div class="col-md">
+                    <h4 class="bold">Senha</h4>
+                    <input class="form-control input-form shadow-sm" name="senha" type="password" placeholder="Digite sua senha...">
+                    <small id="emailHelp" class="form-text text-muted">Sua senha deve conter no mínimo 6 caracteres</small>
+                    <br>
+                    <small id="emailHelp" class="form-text text-muted">Sua senha deve conter caracteres maiúsculos, minúsculos e número</small>
+                </div>
+            </div>
+            <br>
+            <button class="btn-first text-dark">Registrar</button>
+        </form>
+    </div>
+</div>
+<h5 class="text-center text-bolder">Já tem uma conta?&nbsp <a href="" class="btn btn-dark btn-lg">Faça login!</a> </h5>
+{% endblock %}

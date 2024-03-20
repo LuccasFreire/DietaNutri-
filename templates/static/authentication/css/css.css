@@ -1,0 +1,33 @@
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+.area_cadastrar {
+    width: 600px; /* Adjust as needed */
+    padding: 30px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    box-shadow: 5px 10px #b5d8b2;
+}
+.input-form {
+    width: 100%;
+}
+.bold {
+    font-weight: bold;
+}
+.btn-first {
+    background-color: #9ec2a1;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    margin-left: 35%;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    padding: 10px 30px;
+    cursor: pointer;
+}
+.btn-first:hover {
+    background-color: #87b287;
+}
