@@ -5,6 +5,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.contrib.messages import constants
 from django.contrib import messages
+from django.contrib import auth
 # Create your views here.
 
 def cadastro(request):
@@ -26,7 +27,17 @@ def cadastro(request):
             messages.add_message(request, constants.ERROR, 'Erro interno do sistema')
             return redirect('/auth/cadastro')
         
-
-
 def login(request):
-    return HttpResponse('Esta na pagina login')
+    if request.method == 'GET':
+        return render(request, 'login.html')
+    elif request.method == 'POST':
+        usuario = request.POST.get('usuario')
+        senha = request.POST.get('senha')
+
+        user = auth.authenticate(username = usuario, password = senha)
+        if not user:
+            messages.add_message(request, constants.ERROR, 'Usuário ou senha inválidos')
+            return redirect('/auth/login')
+        else:
+            auth.login(request, user)
+            return redirect('/')

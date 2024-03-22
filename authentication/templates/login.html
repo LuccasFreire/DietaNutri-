@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+<link rel="stylesheet" href="{% static 'authentication/css/css.css' %}"/>
+{% endblock %}
+
+{% block 'title' %}Cadastro{% endblock %}
+
+{% block 'body' %}
+<div class="center">
+    <div class="area_cadastrar">
+        {% if messages %}
+            <br />
+            {% for message in messages %}    
+                <div class="alert {{message.tags}}">
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <h1 class="titulo text-center">Login</h1>
+        <p class="sub-titulo text-center text-secondary">Entre com sua conta!</p>
+        <hr/>
+
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <h4 class="bold">Nome de usuário</h4>
+            <input class="form-control input-form shadow-sm" name="usuario" type="text" placeholder="Digite seu nome..."/>
+            <br/>
+            <div class="row">
+                <div class="col-md">
+                    <h4 class="bold">Senha</h4>
+                    <input class="form-control input-form shadow-sm" name="senha" type="password" placeholder="Digite sua senha..."/>
+                    <small id="emailHelp" class="form-text text-muted">Sua senha deve conter no mínimo 6 caracteres</small >
+                        <br/>
+                    <small id="emailHelp" class="form-text text-muted">Sua senha deve conter caracteres maiúsculos, minúsculos e número</small>
+                </div>
+            </div>
+            <br/>
+            <button class="btn-first text-dark"><a class="text-decoration-none text-black">Login</a></button>
+        </form>
+    </div>
+</div>
+<h5 class="text-center text-bolder">Não possui uma conta?&nbsp<a href="{% url 'cadastro' %}" class="btn btn-dark btn-lg">Cadastre-se!</a></h5>
+{% endblock %}

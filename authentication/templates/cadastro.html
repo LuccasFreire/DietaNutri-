@@ -1,6 +1,11 @@
-{% extends 'base.html' %} {% load static %} {% block 'head' %}
+{% extends 'base.html' %}
+{% load static %}
+{% block 'head' %}
 <link rel="stylesheet" href="{% static 'authentication/css/css.css' %}" />
-{% endblock %} {% block 'title' %}Cadastro{% endblock %} {% block 'body' %}
+{% endblock %}
+{% block 'title' %}Cadastro{% endblock %}
+
+{% block 'body' %}
 <div class="center">
     <div class="area_cadastrar">
         {% if messages %}
@@ -62,6 +67,6 @@
 </div>
 <h5 class="text-center text-bolder">
     Já tem uma conta?&nbsp
-    <a href="" class="btn btn-dark btn-lg">Faça login!</a>
+    <a href="{% url 'login' %}" class="btn btn-dark btn-lg">Faça login!</a>
 </h5>
 {% endblock %}
